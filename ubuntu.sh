@@ -102,7 +102,7 @@ fi
 # Fonts and emojis
 if [[ !$isRemoteDev ]]
 then
-    sudo apt-get fonts-noto-color-emoji
+    sudo apt-get install fonts-noto-color-emoji
 fi
 
 # ================================================
