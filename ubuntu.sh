@@ -92,7 +92,25 @@ then
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
         sudo snap install chromium
+        echo "Go to chrome://flags/#force-color-profile and make sure Force Color Profile is set to sRGB"
         sudo snap install code --classic
+        code --install-extension bmewburn.vscode-intelephense-client
+        code --install-extension eamodio.gitlens
+        code --install-extension michelemelluso.code-beautifier
+        code --install-extension Mikael.Angular-BeastCode
+        code --install-extension mrmlnc.vscode-scss
+        code --install-extension ms-azuretools.vscode-docker
+        code --install-extension ms-python.python
+        code --install-extension ms-vscode.csharp
+        code --install-extension ms-vsliveshare.vsliveshare
+        code --install-extension neilbrayfield.php-docblocker
+        code --install-extension Shan.code-settings-sync
+        code --install-extension wayou.vscode-todo-highlight
+
+        sudo add-apt-repository ppa:umang/indicator-stickynotes
+        sudo apt-get update
+        sudo apt-get install indicator-stickynotes
+
         sudo snap install slack --classic
         sudo snap install insomnia
     fi
@@ -120,6 +138,18 @@ then
     echo "Username: <your github username>"
     echo "Password: the access token you created on github"
     git clone https://github.com/fitdegree/fitdegree.git
+
+    # npm install where needed
+    cd ~/dev/fitdegree/clients
+    npm install
+    cd ~/dev/fitdegree/testing
+    npm install
+
+    sudo apt-get install vim
+    echo "
+    export VISUAL=vim
+    export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
+    git config --global core.editor "vim"
 fi
 
 # ================================================
@@ -140,8 +170,3 @@ then
 else
     echo "All done! :)"
 fi
-
-sudo apt-get install vim
-echo "
-export VISUAL=vim
-export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
