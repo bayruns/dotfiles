@@ -91,9 +91,10 @@ then
     read -p "Do you want to install desktop apps (chromium, vscode, slack)? [Y/n] " -n 1 -r
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-        snap install chromium
-        snap install code --classic
-        snap install slack --classic
+        sudo snap install chromium
+        sudo snap install code --classic
+        sudo snap install slack --classic
+        sudo snap install insomnia
     fi
 fi
 
