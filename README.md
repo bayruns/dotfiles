@@ -20,3 +20,4 @@ sudo apt-get install indicator-stickynotes
 
 https://askubuntu.com/questions/1063331/how-to-install-google-chrome-extensions-though-terminal
 
+https://stackoverflow.com/questions/46199758/weird-colors-on-chrome-linux
