@@ -98,6 +98,12 @@ then
 fi
 
 
+#=============================
+# Fonts and emojis
+if [[ !$isRemoteDev ]]
+then
+    sudo apt-get fonts-noto-color-emoji
+fi
 
 # ================================================
 # Setup git and dev stuff
