@@ -129,7 +129,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "
     alias gitclean='git branch --merged | grep -v \* | xargs git branch -D'
-    alias fd='cd ~/dev/fitdegree'"
+    alias fd='cd ~/dev/fitdegree'" >> ~/.bashrc
 fi
 
 if [[ !$isRemoteDev ]]
@@ -141,3 +141,7 @@ else
     echo "All done! :)"
 fi
 
+sudo apt-get install vim
+echo "
+export VISUAL=vim
+export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
