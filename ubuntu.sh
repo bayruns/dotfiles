@@ -51,6 +51,9 @@ sudo docker run hello-world
 # Fix docker permission
 sudo chmod 666 /var/run/docker.sock
 
+# Download and run the ubunutu version of
+# https://github.com/docker/kitematic/releases/latest
+
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 command -v nvm
