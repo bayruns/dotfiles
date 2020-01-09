@@ -15,3 +15,5 @@ TODO
 sudo add-apt-repository ppa:umang/indicator-stickynotes
 sudo apt-get update
 sudo apt-get install indicator-stickynotes
+
+https://askubuntu.com/questions/1063331/how-to-install-google-chrome-extensions-though-terminal
