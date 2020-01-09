@@ -69,6 +69,14 @@ sudo docker run hello-world
 
 # Fix docker permission
 sudo chmod 666 /var/run/docker.sock
+
+sudo groupadd docker # todo: remove if not needed
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Install docker sync
+gem install docker-sync
+
 # ================================================
 
 # Install node version manager
