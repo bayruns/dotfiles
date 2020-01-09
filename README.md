@@ -10,6 +10,7 @@ TODO
 - npm install inside all fd repository folders (clients, testing)
 - Add setup to add things to favorites
 - Force chrome color profile to sRGB
+- git config --global core.editor "vim"
 
 - https://stackoverflow.com/questions/35773299/how-can-you-export-vs-code-extension-list
 - https://askubuntu.com/questions/245019/what-alternatives-for-sticky-notes-are-available
