@@ -23,7 +23,7 @@ then
         echo "In the top bar of this window, select Command tab and check 'Run command as login shell'."
         echo "================================================"
     fi
-    echo "Now reboot your computer, then run this script again :)" 
+    echo "Now reboot your computer, then run this script again" 
     echo "You can also try logging out or restarting your terminal, BUT"
     echo "Running the command 'id' should contain an entry for rvm, like 1001(rvm)"
     echo "Here is the current output of id"
@@ -104,8 +104,8 @@ then
         code --install-extension ms-vscode.csharp
         code --install-extension ms-vsliveshare.vsliveshare
         code --install-extension neilbrayfield.php-docblocker
-        code --install-extension Shan.code-settings-sync
         code --install-extension wayou.vscode-todo-highlight
+        code --install-extension geeksharp.openssl-configuration-file
 
         sudo add-apt-repository ppa:umang/indicator-stickynotes
         sudo apt-get update
@@ -113,6 +113,10 @@ then
 
         sudo snap install slack --classic
         sudo snap install insomnia
+
+        cd ~/Downloads
+        wget http://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb
+        sudo apt-get install ./gcolor2_0.4-2.1ubuntu1_amd64.deb
     fi
 fi
 
@@ -168,5 +172,5 @@ then
     echo "https://github.com/docker/kitematic/releases/latest"
     echo "Then you're good to go!"
 else
-    echo "All done! :)"
+    echo "All done"
 fi
