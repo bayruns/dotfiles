@@ -4,46 +4,18 @@
 read -p "Are you setting up a remote dev environment with no GUI? [Y/n] " -n 1 -r  remoteDevYn
 isRemoteDev=$(( $remoteDevYn == "Y" || $remoteDevYn == "y" ? 1 : 0 ))
 
-if [ $(dpkg-query -W -f='${Status}' rvm 2>/dev/null | grep -c "ok installed") -eq 0 ];
-then
-    sudo apt-get install software-properties-common
-    sudo apt-get install zlibc zlib1g zlib1g-dev
-    sudo apt-get install libssl-dev
-    sudo apt-add-repository -y ppa:rael-gc/rvm
-    sudo apt-get update
-    sudo apt-get install rvm
-
-    if [[ $isRemoteDev ]]
-    then
-        echo "================================================"
-        echo "If running as a desktop OS:"
-        echo "In order to always load rvm, change the Gnome Terminal to always perform a login."
-        echo "HOW TO:"
-        echo "Click top left of the screen Terminal->Preferences->Under 'Profiles' in the sidebar, select your profile (may be called Unnamed)"
-        echo "In the top bar of this window, select Command tab and check 'Run command as login shell'."
-        echo "================================================"
-    fi
-    echo "Now reboot your computer, then run this script again" 
-    echo "You can also try logging out or restarting your terminal, BUT"
-    echo "Running the command 'id' should contain an entry for rvm, like 1001(rvm)"
-    echo "Here is the current output of id"
-    id
-    exit;
-else
-    # After computer restarts, set up rvm stuff
-    rvm install ruby
-    echo "
-
-    if which ruby >/dev/null && which gem >/dev/null; then
-    PATH=\"$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:\$PATH\"
-    fi
-    " >> ~/.bashrc
-fi
+sudo apt update
+sudo apt install ruby-full
+ruby --version
 
 # ================================================
 # Util installs
 sudo apt get git
 sudo apt-get install mysql-client
+sudo apt-get install vim
+echo "
+export VISUAL=vim
+export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
 
 # ================================================
 # Docker install
@@ -117,6 +89,10 @@ then
         cd ~/Downloads
         wget http://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb
         sudo apt-get install ./gcolor2_0.4-2.1ubuntu1_amd64.deb
+
+        export VERSION=$(curl -s "https://github.com/docker/kitematic/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')
+        wget https://github.com/docker/kitematic/releases/download/$VERSION/Kitematic-$VERSION-Ubuntu.zip --directory-prefix='~/Downloads/'
+        tar -xzC ~/Downloads/kitematic-latest/ --strip 1 Kitematic-$VERSION-Ubuntu/{openssl-1.0.cnf,easyrsa,x509-types} 
     fi
 fi
 
@@ -126,6 +102,11 @@ fi
 if [[ !$isRemoteDev ]]
 then
     sudo apt-get install fonts-noto-color-emoji
+    # Cursor theme
+    sudo apt-get install adwaita-icon-theme-full
+    # Set cursor size
+    echo "Xcursor.size: 22" >> /etc/X11/Xresources/x11-common
+    echo "Xcursor.theme: Adwaita" >> /etc/X11/Xresources/x11-common
 fi
 
 # ================================================
@@ -149,12 +130,9 @@ then
     cd ~/dev/fitdegree/testing
     npm install
 
-    sudo apt-get install vim
-    echo "
-    export VISUAL=vim
-    export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
     git config --global core.editor "vim"
 fi
+
 
 # ================================================
 # Bashrc aliases
