@@ -105,8 +105,8 @@ then
     # Cursor theme
     sudo apt-get install adwaita-icon-theme-full
     # Set cursor size
-    echo "Xcursor.size: 22" >> /etc/X11/Xresources/x11-common
-    echo "Xcursor.theme: Adwaita" >> /etc/X11/Xresources/x11-common
+    sudo echo "Xcursor.size: 16" >> /etc/X11/Xresources/x11-common
+    sudo echo "Xcursor.theme: Adwaita" >> /etc/X11/Xresources/x11-common
 fi
 
 # ================================================
