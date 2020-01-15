@@ -86,10 +86,32 @@ then
         sudo snap install slack --classic
         sudo snap install insomnia
 
+        sudo add-apt-repository ppa:wireshark-dev/stable
+        sudo apt-get update
+        sudo apt-get install wireshark
+        sudo wireshark
+
+        # Install android studio
+        # sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+        # sudo unzip ~/Downloads/android-studio-ide-171.4443003-linux.zip -d /opt/google/
+        # sudo mkdir /opt/google/android-sdk
+        # sudo chmod o+w /opt/google/android-sdk
+        # sudo -i
+        # cd /etc/profile.d/
+        # echo export ANDROID_SDK_ROOT=/opt/google/android-sdk/ > android_studio.sh
+        # echo export ANDROID_HOME=/opt/google/android-sdk/ >> android_studio.sh
+        # echo export JAVA_HOME=/opt/google/android-studio/jre >> android_studio.sh
+        # /opt/google/android-studio/bin/studio.sh 
+
+        # sudo -E /opt/google/android-studio/bin/studio.sh 
+        sudo snap install --classic android-studio 
+
+        # Install gcolor
         cd ~/Downloads
         wget http://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb
         sudo apt-get install ./gcolor2_0.4-2.1ubuntu1_amd64.deb
 
+        # Install kitematic
         export VERSION=$(curl -s "https://github.com/docker/kitematic/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')
         wget https://github.com/docker/kitematic/releases/download/$VERSION/Kitematic-$VERSION-Ubuntu.zip --directory-prefix='~/Downloads/'
         tar -xzC ~/Downloads/kitematic-latest/ --strip 1 Kitematic-$VERSION-Ubuntu/{openssl-1.0.cnf,easyrsa,x509-types} 
