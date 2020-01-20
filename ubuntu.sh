@@ -22,6 +22,9 @@ sudo -u $user ruby --version
 apt get git
 apt-get install mysql-client
 apt-get install vim
+sudo apt install python3-pip
+pip3 install awscli --upgrade --user
+echo "export PATH=$PATH:~/.local/bin/" >> ~/.bashrc
 sudo -u $user echo "
 export VISUAL=vim
 export EDITOR=\"\$VISUAL\"" >> ~/.bashrc
